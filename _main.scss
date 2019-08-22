@@ -1,0 +1,67 @@
+$deck-suits: ('spade', 'heart', 'club', 'diamond');
+$card-values: ('A', 'K', 'Q', 'J', '10', '9','8', '7', '6', '5', '4', '3', '2');
+$bg-color: #0e3233;
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: $bg-color;
+}
+
+section {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	> div {
+		background-color: cadetblue;
+		padding: 10px;
+		margin: 10px 10px 0;
+		border-radius: 4px;
+
+		.deck .card {
+			$width: 80px;
+
+			width: $width;
+			height: 1.25 * $width;
+			background-repeat: no-repeat;
+			background-size: cover;
+			margin-left: -2px;
+
+			@each $suit in $deck-suits {
+				@each $value in $card-values {
+					&.#{$suit}-#{$value} {
+						background-image: url(cards/#{$suit}-#{$value}.svg);
+					}
+				}
+			}
+
+			&:last-child {
+				min-width: $width;
+			}
+		}
+	}
+
+	.deck {
+		display: flex;
+	}
+
+	span {
+		width: 45px;
+		text-align: center;
+		background-color: yellow;
+		display: inline-block;
+		font-size: 19px;
+		margin: 0 10px;
+	}
+
+	h3 {
+		text-align: center;
+		font-family: sans-serif;
+		text-transform: uppercase;
+		color: $bg-color;
+		letter-spacing: 6px;
+		font-size: 15px;
+	}
+}
